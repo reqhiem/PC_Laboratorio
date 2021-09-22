@@ -1,6 +1,6 @@
-//casos de prueba
-/*
-
+/**
+ *  @autor: jperca
+ *  @pruebas: 
     list<int> a = {3,1,5};
     list<int> b = {5,9,2};
 

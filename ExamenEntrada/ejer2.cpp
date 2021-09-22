@@ -1,5 +1,7 @@
-//Casos de prueba
-/*
+/**
+ *  @autor: jperca
+ *  @pruebas: 
+
 list<int> v = {5,10,10,1,2,2,50,12,12};
 list<int> v = {40,12,3,8,3,2,45,40,23};
 

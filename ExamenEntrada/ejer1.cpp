@@ -1,5 +1,7 @@
-//Casos de prueba
-/*
+
+/**
+ *  @autor: jperca
+ *  @pruebas: 
 
 string str1 = "elanio pasado";
 string str2 = "sapado laeoin";

@@ -1,5 +1,6 @@
-//casos de prueba
-/*
+/**
+ *  @autor: jperca
+ *  @pruebas: 
 
 {4,5,6,1,3}
 stack<int> s;

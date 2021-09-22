@@ -1,6 +1,7 @@
-//casos de prueba
-
-/*
+/**
+ *  @autor: jperca
+ *  @pruebas: 
+ * 
     vector<int> A = {2,4,6};
     vector<int> B = {1,5,7};
 
