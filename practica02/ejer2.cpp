@@ -1,4 +1,15 @@
-//prefix sums
+/**
+ *  @autor: jperca
+ *  @descripcion: PREFIX SUM. Cálculo rápido de sumas de elementos en un determinado rango 
+ *  @pruebas:
+
+5
+1 2 3 4 5
+
+6
+6 7 12 2 4 5 
+
+*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -22,6 +33,7 @@ int main(){
         B.push_back(B.back() + x);
     }
 
+    //imprimir el arreglo con la suma de prefijos
     for(auto el : B) cout << el << " ";
     cout << endl;
 

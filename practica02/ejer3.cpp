@@ -1,4 +1,13 @@
-//find pivot
+
+/**
+ *  @autor: jperca
+ *  @descripcion: FIND PIVOT INDEX. Return the leftmost pivot index. If no such index exists, return -1.
+ *  @pruebas:
+
+int A[] = {2,1,-1};
+int A[] = {1,7,3,6,5,6};
+
+*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -18,8 +27,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    //int A[] = {2,1,-1};
-    //int A[] = {1,7,3,6,5,6};
+    //aqui cambie las pruebas
     int A[] = {1,2,3};
 
 

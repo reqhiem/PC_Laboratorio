@@ -1,3 +1,12 @@
+/**
+ *  @autor: jperca
+ *  @decripcion: Write a single integer to output, denoting how many integers ti are divisible by k.
+ *  @pruebas:
+
+
+
+*/
+
 #include <iostream>
 
 using namespace std;

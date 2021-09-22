@@ -1,4 +1,13 @@
-// Subarray Sums Divisible by K
+/**
+ *  @autor: jperca
+ *  @descripcion: Subarray Sums Divisible by K.
+ *  @pruebas:
+
+vi nums = {4,5,0,-2,-3,1};
+vi nums = {1,7,3,6,5,6};
+vi nums = {1,2,3};
+
+*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -26,6 +35,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    //aqui cambie las pruebas
     vi nums = {4,5,0,-2,-3,1};
     int k = 5;
 
