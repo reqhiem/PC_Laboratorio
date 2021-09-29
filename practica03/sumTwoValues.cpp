@@ -1,45 +1,39 @@
 #include <iostream>
 #include <vector>
-#include <map>
-#include <unordered_map>
 #include <utility>
 #include <algorithm>
-#include <iterator>
-#include <cmath>
 
 using namespace std;
-typedef vector<int> vi;
 typedef pair<int,int> ii;
+typedef unsigned long long ull;
+
+
 
 int n,x, i,j;
 
 bool compare(pair<int,int> &a, pair<int,int> &b){
-    return (a.second > b.second);
+    return (a.second < b.second);
 }
 
 void sumTwoValues(vector<pair<int,int>> &arr, int n, int x){
 
     sort(arr.begin(), arr.end(), compare);
 
-    auto it1 = arr.begin();
-    auto it2 = arr.end(); it2--;
+    int i=0; j=n-1;
 
-    while (it1 != it2)
+    while (i<j)
     {
-        if((it1->second + it2->second) > x) it2--;
-        else if ((it1->second + it2->second) < x) it1++;
-        else break;
+        if((arr[i].second + arr[j].second) == x) break;
+        else if((arr[i].second + arr[j].second) > x) j--;
+        else if ((arr[i].second + arr[j].second) < x) i++;
+        
     }
     
-    if(it1 != it2){
-        cout << it1->first + 1 << " " << it2->first + 1 << endl;
+    if(i<j){
+        cout << arr[i].first + 1 << " " << arr[j].first + 1 << endl;
     }else{
         cout << "IMPOSSIBLE" << endl;
     }
-
-
-    /* for(auto it = arr.begin(); it != arr.end(); it++)
-        cout << it->first << " " << it->second << endl; */
 
     
 }
