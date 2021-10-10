@@ -1,3 +1,7 @@
+/**
+ *  @descripcion: Este programa fue admitido por el jurado como una solución
+*/
+
 #include <iostream>
 #include <climits>
 using namespace std;
