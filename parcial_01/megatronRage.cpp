@@ -6,7 +6,6 @@ const int ms = 5e04 + 10;
 
 int T,c,P,M,p, arr[ms] = {0};
 
-// Function to find max sum of contiguous subarray less than M, and the length of the subarray
 void megatronRage(int *arr, int M, int P){
     
     int i, max_sum = INT_MAX, sum = 0, start = 0, max_len = 0, len=0;
