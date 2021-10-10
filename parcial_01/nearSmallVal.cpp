@@ -1,3 +1,8 @@
+/**
+ *  @descripcion: Este programa fue admitido por el jurado como una solución
+*/
+
+
 #include <iostream>
 #include <vector>
 using namespace std;
