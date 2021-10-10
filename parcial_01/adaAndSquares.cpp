@@ -1,3 +1,8 @@
+/**
+ *  @descripcion: Este programa fue enviado y se queda en la PRUEBA 15 (complejidad cuadrática)
+*/
+
+
 #include <iostream>
 #include <climits>
 #include <cmath>
