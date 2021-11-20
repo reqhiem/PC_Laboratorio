@@ -70,21 +70,3 @@ int main(int argc, char const *argv[]){
 
     return 0;
 }
-
-/*
-
-ALEX JOSUE FLOREZ FARFAN7:16
-https://open.kattis.com/problems/integerlists
-ALEX JOSUE FLOREZ FARFAN7:24
-https://open.kattis.com/problems/teque
-ALEX JOSUE FLOREZ FARFAN7:26
-https://leetcode.com/problems/kth-largest-element-in-an-array
-ALEX JOSUE FLOREZ FARFAN7:39
-https://www.beecrowd.com.br/judge/en/problems/view/1119
-ALEX JOSUE FLOREZ FARFAN7:47
-https://open.kattis.com/problems/interviewqueue
-ALEX JOSUE FLOREZ FARFAN7:49
-https://leetcode.com/problems/merge-k-sorted-lists/
-
-
-*/

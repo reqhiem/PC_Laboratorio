@@ -28,8 +28,7 @@ void solve(string &str){
 
 int main(int argc, char const *argv[])
 {
-    string str = "abc$d@ef$@g$";
-    //cin >> str;
+    string str = "abc$d@ef$@g$"; //Expected output: abcDEFg
     solve(str);
     return 0;
 }

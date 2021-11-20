@@ -24,8 +24,7 @@ void solve(string &str){
 
 int main(int argc, char const *argv[])
 {
-    string str = "abc#de##f#ghi#jklmn#op#";
-    //cin >> str;
+    string str = "abc#de##f#ghi#jklmn#op#"; //Expected ouptut: abghjklmo
     solve(str);
     return 0;
 }

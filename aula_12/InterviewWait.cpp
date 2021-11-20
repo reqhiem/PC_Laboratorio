@@ -26,7 +26,7 @@ void solve(vector<int> &arr){
 
 int main(int argc, char const *argv[])
 {
-    vector<int> arr = {4,-1,5,2,3};
+    vector<int> arr = {4,-1,5,2,3}; //expected output: 9
     solve(arr);
     return 0;
 }
