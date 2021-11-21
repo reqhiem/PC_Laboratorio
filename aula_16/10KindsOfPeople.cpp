@@ -1,63 +1,90 @@
+
 #include <iostream>
+#include <vector>
 #include <string>
-#include <cstring>
+#include <algorithm>
+
 using namespace std;
 
-string line;
-int mat[1005][1005], matTmp[1005][1005];
-int R, C, N, r1, r2, c1, c2;
-bool visited[1005][1005];
-int offsets[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<vector<bool> > vvb;
+typedef vector<string> vs;
 
-void dfs(int i, int j, int fc, int fn){
-    visited[i][j] = true;
-    matTmp[i][j] = fn;
-    for(int k = 0; k < 4; k++){
-        int ni = i + offsets[k][0];
-        int nj = j + offsets[k][1];
-        if(ni >= 0 && ni < R && nj >= 0 && nj < C && !visited[ni][nj] && mat[ni][nj] == fc){
-            dfs(ni, nj, fc, fn);
-        }
-    }
+vvi offsets = {{-1,0},{0,1},{1,0},{0,-1}};
 
+void dfs(int i, int j, vs &grid, vvb &visited, vvi &grid2, int rows, int cols, char fc, int fn){
+	visited[i][j] = true;
+	grid2[i][j] = fn;
+	int xx, yy;
+	for (int k = 0; k < 4; k++){
+		switch (k) {
+            case 0:
+                xx = i - 1; yy = j;
+                break; break;
+            case 1:
+                xx = i; yy = j + 1;
+                break;
+            case 2:
+                xx = i + 1; yy = j;
+                break; break;
+            case 3:
+                xx = i; yy = j - 1;
+                break;
+		};
+
+		if (xx >= 0 && xx < rows && yy >= 0 && yy < cols && !visited[xx][yy] && grid[xx][yy] == fc){
+			dfs(xx, yy, grid, visited, grid2, rows,  cols, fc, fn);
+		}
+	}
 }
 
-int main(int argc, char const *argv[]){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    memset(visited, false, sizeof visited);
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	int i, j, k;
 
-    cin >> R >> C;
+	int rows, cols;
+	int numQueries;
+	int cont = 0;
+	int r1, r2, c1, c2;
+	cin >> rows >> cols;
+	vvi grid2(rows);
+	vs grid(rows);
+	vvb visited(rows);
+	for (i = 0; i < rows; i++){
+		cin >> grid[i];
+		grid2[i].resize(cols);
+		visited[i].resize(cols, false);
+	}
+	
+	for (i = 0; i < rows; i++){
+		for (j = 0; j < cols; j++){
+			if (!visited[i][j]){
+				dfs(i, j, grid, visited, grid2, rows, cols, grid[i][j], cont);
+				cont++;
+			}
+		}
+	}
 
-    for(int i=0; i<R; i++){
-        cin >> line;
-        int j = 0;
-        for(auto car : line) mat[i][j++] = (car == '0') ? 0 : 1;
-    }
+	cin >> numQueries;
+	for (i = 0; i < numQueries; i++){
+		cin >> r1 >> c1 >> r2 >> c2;
 
-    int cont = 0;
-    //Process
-    for(int i=0; i<R; i++){
-        for(int j=0; j<C; j++){
-            if(!visited[i][j]){
-                dfs(i,j,mat[i][j],cont);
-                cont++;
-            }
-        }
-    }
-
-
-    //Queries
-    cin >> N;
-    for(int i=0; i<N; i++){
-        cin >> r1 >> c1 >> r2 >> c2;
-        r1--; c1--; r2--; c2--;
-        if(matTmp[r1][c1] == matTmp[r2][c2]){
-            if(mat[r1][c1] == 0) cout << "binary\n";
-            else cout << "decimal\n";
-        }else cout << "neither\n";
-    }
-
-    return 0;
+		r1--; r2--; c1--; c2--;
+		if (grid2[r1][c1] == grid2[r2][c2]){
+			if (grid[r1][c1] == '0'){
+				cout << "binary\n";
+			}
+			else{
+				cout << "decimal\n";
+			}
+		}
+		else{
+			cout << "neither\n";
+		}
+	}
+	return 0;
 }
