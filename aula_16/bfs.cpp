@@ -1,35 +1,79 @@
 #include <iostream>
 #include <queue>
+#define ROW 5
+#define COL 5
+
 using namespace std;
 
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<vector<bool>> vvb;
 
-int main(int argc, char const *argv[])
+vvi offsets = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+bool isValid(vvb &vis, int row, int col)
 {
-    vector<vector<int>> visited(5, vector<int>(5, 0));
-    vector<vector<int>> graph(5, vector<int>(5, -1));
-    graph[1][2] = 0;
+    if (row < 0 || col < 0
+        || row >= ROW || col >= COL)
+        return false;
+ 
+    if (vis[row][col])
+        return false;
 
-    int i=1, j=2;
-    queue<pair<int,int>> Q;
-    int cont = 0;
+    return true;
+}
 
-    Q.push({i,j});
-    visited[i][j] = 1;
+void bfs(vvi &grid, int row, int col, vvb &vis) {
+    queue<pair<int, int> > q;
 
-    while (!Q.empty()){
-        auto n = Q.front();
-        Q.pop();
-        vector<pair<int,int>> neighbors = {{n.first+1, n.second}, {n.first-1, n.second}, {n.first, n.second+1}, {n.first, n.second-1}};
-        for(auto vec : neighbors){
-            if(visited[vec.first][vec.second] == 0 && (vec.first >= 0 && vec.first < 5) && (vec.second >= 0 && vec.second < 5)){
-                Q.push(vec);
-                visited[vec.first][vec.second] = 1;
-                graph[vec.first][vec.second] = graph[n.first][n.second] + 1;
+    q.push({ row, col });
+    vis[row][col] = true;
+ 
+    while (!q.empty()) {
+ 
+        pair<int, int> cell = q.front();
+        int x = cell.first;
+        int y = cell.second;
+ 
+        q.pop();
+
+        for (int i = 0; i < 4; i++) {
+ 
+            int adjx = x + offsets[i][0];
+            int adjy = y + offsets[i][1];
+ 
+            if (isValid(vis, adjx, adjy)) {
+                q.push({ adjx, adjy });
+                vis[adjx][adjy] = true;
+                grid[adjx][adjy] = grid[x][y] + 1;
             }
         }
     }
+}
 
-    //print the matrix
+
+int main(int argc, char const *argv[])
+{   
+    int position = 0;
+    vvi offsets = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+
+    vector<vector<bool>> visited(5, vector<bool>(5, false));
+    vvi graph(5, vector<int>(5, -1));
+    graph[1][2] = 0;
+
+    //print the Grid
+    cout << "Initial grid: " << endl;
+    for(auto vec : graph){
+        for(auto i : vec){
+            cout << i << " ";
+        }
+        cout << endl;
+    }
+
+    bfs(graph, 1, 2, visited);
+
+    //print the Grid after BFS
+    cout << "Final grid: " << endl;
     for(auto vec : graph){
         for(auto i : vec){
             cout << i << " ";
