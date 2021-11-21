@@ -1,106 +1,90 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <string>
-#include <queue>
-#include <cstring>
+#include <algorithm>
+#include <set>
+
+#define INF 9999
+
 using namespace std;
 
-const int MS = 1e4 + 10;
+typedef long long int ll;
+typedef unsigned long long ull;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef set<pair<int, int>> spii;
 
-int N, M, j, curr;
-int grid[110][110];
-bool vis[110][110];
-int offsets[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-int tree[MS][2];
-string linestr;
+int i, j, k;
+int rows, cols;
 
-bool isValid(int row, int col)
-{
-    if (row < 0 || col < 0
-        || row >= N || col >= M)
-        return false;
- 
-    if (vis[row][col])
-        return false;
+int main(int argc, char const *argv[]){
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
 
-    return true;
-}
+    cin >> rows >> cols;
 
-void bfs(int row, int col){
-    queue<pair<int,int>> q;
-    
-    q.push({ row, col });
-    vis[row][col] = true;
-    int color = 3;
-    grid[row][col] = color;
-    while(!q.empty()){
-        pair<int,int> cell  = q.front();
-        q.pop();
-        int x = cell.first;
-        int y = cell.second;
+    vvi offsets = { {0, 1}, {0, -1}, {1, 0}, {-1, 0} };
+    vvi grid(rows+2, vector<int>(cols+2, 0));
+    vvi grid2(rows+2, vector<int>(cols+2, 0));
+    spii trees;
+    spii trees2;
 
-        for(int i = 0; i < 4; i++){
-            int nx = x + offsets[i][0];
-            int ny = y + offsets[i][1];
+    char temp;
 
-            if(isValid(nx, ny) && grid[nx][ny] == 1){
-                vis[nx][ny] = true;
-                q.push({ nx, ny });
-                grid[nx][ny] = color;
-            }
-        }
-        color++;
-    }
-}
-
-void solve(){
-    memset(vis, false, sizeof(vis));
-
-    //print tree
-    /* for(int i = 0; i < curr; i++){
-        cout << tree[i][0] << " " << tree[i][1] << endl;
-    } */
-
-    bfs(0,1);
-}
-
-int main(int argc, char const *argv[])
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    curr = 0;
-    cin >> N >> M;
-    for(int i=0; i<N; i++){
-        cin >> linestr;
-        j = 0;
-        for(auto &car : linestr){
-            if(car == 'T'){
-                grid[i][j++] = 1;
-                tree[curr][0] = i;
-                tree[curr++][1] = j-1;
-            }else grid[i][j++] = 0;
-        }
+    for(int i = 0; i < rows; i++){
+    	for(int j = 0; j < cols; j++){
+    		cin >> temp;
+    		if(temp == 'T'){
+    			grid[i+1][j+1] = INF;
+    			trees.insert(make_pair(i+1, j+1));
+    		}
+    	}
     }
 
-    //print grid
-    for(int i=0; i<N; i++){
-        for(int j=0; j<M; j++){
-            cout << grid[i][j] << " ";
-        }
-        cout << endl;
+    //usar bfs
+
+    int colorAux = -1;
+    while(trees.size())
+    {
+    	trees2 = trees;
+    	grid2 = grid;
+    	auto itr = trees2.begin();
+    	while(itr != trees2.end()){
+    		int color = INF;
+    		for(int i = 0; i < 4; i++)
+    		{
+    			int xx = (*itr).first + offsets[i][0];
+    			int yy = (*itr).second + offsets[i][1];
+    			if(xx < rows+2 && xx >= 0 && yy < cols+2 && yy >= 0){
+    				if(grid2[xx][yy] < color)
+    					color = grid2[xx][yy];
+    			}
+    		}
+    		if(color < INF){
+				grid[(*itr).first][(*itr).second] = color + 1;
+				trees.erase((*itr));
+				if(colorAux < color + 1)
+					colorAux = color + 1;
+			}
+    		itr++;
+    	}
     }
 
-    //apply rules
-    solve();
-
-    //print grid
-    for(int i=0; i<N; i++){
-        for(int j=0; j<M; j++){
-            cout << grid[i][j] << " ";
-        }
-        cout << endl;
+    //print el resultado
+    for(int i = 1; i < rows+1; i++){
+    	for(int j = 1; j < cols+1; j++){
+    		if(colorAux >= 10)
+    			cout << ".";
+    		if(grid[i][j] == 0)
+    			cout << "..";
+    		else if(grid[i][j] < 10)
+    			cout << "." << grid[i][j];
+    		else
+    			cout << grid[i][j];
+    	}
+    	cout << "\n";
     }
-
     return 0;
 }
