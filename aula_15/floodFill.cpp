@@ -1,62 +1,21 @@
 //Flood Fill problem
+
 #include <iostream>
 #include <vector>
+#define OSIZE 4
 
 using namespace std;
 
+static int offsets[][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
 void _floodFill(vector<vector<int>> &grid, int i, int j, int color, int oldCol){
     if(i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != oldCol)
         return;
     grid[i][j] = color;
 
-    if(i==0 && j==0){
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
+    for(int k=0; k<OSIZE; ++k){
+        _floodFill(grid, i+offsets[k][0], j+offsets[k][1], color, oldCol);
     }
-    else if(i==0 && j==grid[0].size()-1){
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-    else if(i==grid.size()-1 && j==0){
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
-    }
-    else if(i==grid.size()-1 && j==grid[0].size()-1){
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-    else if(i==0){
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-    else if(i==grid.size()-1){
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-    else if(j==0){
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
-    }
-    else if(i==0 && j==grid[0].size()-1){
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-    else{
-        _floodFill(grid, i+1, j, color, oldCol);
-        _floodFill(grid, i-1, j, color, oldCol);
-        _floodFill(grid, i, j+1, color, oldCol);
-        _floodFill(grid, i, j-1, color, oldCol);
-    }
-
-    /* floodFill(grid, i+1, j, color, oldCol);
-    floodFill(grid, i-1, j, color, oldCol);
-    floodFill(grid, i, j+1, color, oldCol);
-    floodFill(grid, i, j-1, color, oldCol); */
 }
 
 int main(int argc, char const *argv[])
@@ -64,8 +23,16 @@ int main(int argc, char const *argv[])
     vector<vector<int>> grid = {{1,1,1},
                                 {1,1,0},
                                 {1,0,1}};
+    cout << "Original Grid:\n";
+    for(auto i : grid){
+        for(auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
+
     _floodFill(grid, 1, 1, 2, 1);
 
+    cout << "Flood fill Grid:\n";
     for(auto i : grid){
         for(auto j : i)
             cout << j << " ";
