@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+string line;
 int mat[1000][1000], R, C, N, r1, r2, c1, c2;
 
 void process(string &line, int i){
@@ -19,12 +20,12 @@ int main(int argc, char const *argv[]){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    string line;
-
     cin >> R >> C;
+
     for(int i=0; i<R; i++){
         cin >> line;
-        process(line, i);
+        int j = 0;
+        for(auto car : line) mat[i][j++] = (car == '0') ? 0 : 1;
     }
 
     for(int i=0; i<R; i++){
