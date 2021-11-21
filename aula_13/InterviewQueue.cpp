@@ -8,8 +8,11 @@ const int MS = 10e5+10;
 int n, x, arr[MS];
 
 void solve(int *arr, int &N){
+
     int time = 0;
     vector<vector<int>> ans;
+    vector<int> tmp;
+
     queue<int> q;
 
     while(true){
@@ -21,6 +24,7 @@ void solve(int *arr, int &N){
             for(int i=0; i<N; i++){
                 arr[i] = q.front();
                 q.pop();
+                tmp.pop_back();
             }
         }
 
@@ -39,7 +43,10 @@ void solve(int *arr, int &N){
                 isdel = true;
                 aux.push_back(arr[i]);
             }
-            if(!isdel) q.push(arr[i]);
+            if(!isdel){
+                q.push(arr[i]);
+                tmp.push_back(arr[i]);
+            }
         }
 
 
@@ -47,11 +54,24 @@ void solve(int *arr, int &N){
         if(ops == 0) break;
         else{
             time++;
+            cout << endl;
             ans.push_back(aux);
         }
     }
 
     cout << time << endl;
+    //print ans
+    for(int i=0; i<ans.size(); i++){
+        for(int j=0; j<ans[i].size(); j++){
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    //print tmp
+    for(int i=0; i<tmp.size(); i++){
+        cout << tmp[i] << " ";
+    }
+    cout << endl;
 
 }
 
