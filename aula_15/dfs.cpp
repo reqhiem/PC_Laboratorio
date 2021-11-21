@@ -17,7 +17,25 @@ void dfs_recursive(vector<vector<int>> &G, vector<int> &visited, int node){
 }
 
 void dfs_iterative(vector<vector<int>> &G, int node){
-    
+    vector<int> S;
+    vector<bool> visited(G.size(), false);
+    S.push_back(node);
+    visited[node] = true;
+    cout << node << " ";
+
+    while(!S.empty()){
+        int v = S.back();
+        S.pop_back();
+        for(int i=0; i<G.size(); i++){
+            if(G[v][i] == 1 && !visited[i]){
+                S.push_back(i);
+                visited[i] = true;
+                cout << i << " ";
+            }
+        }
+    }
+    cout << endl;
+
 }
 
 int main(int argc, char const *argv[])
@@ -31,8 +49,10 @@ int main(int argc, char const *argv[])
     };
 
     vector<int> visited(graph.size(), 0);
+    cout << "DFS Recursive: ";
+    dfs_recursive(graph, visited, 0); cout << endl;
 
-    dfs_recursive(graph, visited, 0);
-
+    cout << "DFS Iterative: ";
+    dfs_iterative(graph, 0);
     return 0;
 }
