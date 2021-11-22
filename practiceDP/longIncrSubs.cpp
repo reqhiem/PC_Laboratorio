@@ -8,8 +8,7 @@ typedef vector<vector<int>> vvi;
 
 
 int lengthOfLIS(vi &nums){
-    if(nums.size() == 0) return 0;
-    if(nums.size() == 1) return 1;
+    if(nums.size() <= 1) return nums.size();
 
     vi dp(nums.size(), 1);
     int maxi = 1;
