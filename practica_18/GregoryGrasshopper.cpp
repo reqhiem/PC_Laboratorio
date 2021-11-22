@@ -1,3 +1,5 @@
+//SOLVED BUT NOT PASS THE JUDGE
+
 #include <iostream>
 #include <vector>
 #include <climits>
