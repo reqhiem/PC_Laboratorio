@@ -1,6 +1,6 @@
 /**
  *  autor: Joel Perca
- *  problema: Planets and Kingdoms de https://cses.fi/problemset/result/3165663/
+ *  problema: Planets and Kingdoms de https://cses.fi/problemset/task/1683/
 */
 #include <iostream>
 #include <list>
