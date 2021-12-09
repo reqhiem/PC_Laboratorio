@@ -50,11 +50,13 @@ void constructSA(){
 }
 
 int main(){
-    cin.getline(T, MAX_N);
-    n = (int)strlen(T);
-    T[n++] = '$';
-    constructSA();
-    for (int i = 1; i < n; i++){
-        cout << SA[i] << " " << T + SA[i] << endl;
+    while(true){
+        cin.getline(T, MAX_N);
+        n = (int)strlen(T);
+        T[n++] = '$';
+        constructSA();
+        for (int i = 1; i < n; i++){
+            cout << SA[i] << " " << T + SA[i] << endl;
+        }
     }
 }
