@@ -1,3 +1,9 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Repeated Substrings from https://open.kattis.com/submissions/8148699
+ *  @estado: Enviado al jurado TIME LIMIT EXCEEDED
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <cstring>
@@ -6,7 +12,7 @@ using namespace std;
 #define MAX_N 100010
 char T[MAX_N]; //inpput string
 int n;
-int RA[MAX_N], tempRA[MAX_N]; // rank array and temporary rank array
+int RA[MAX_N], tempRA[MAX_N]; 
 int SA[MAX_N], tempSA[MAX_N]; // suffix array and temporary suffix array
 int LCP[MAX_N]; // longest common prefix array
 int c[MAX_N]; //for counting/radix sort
@@ -69,17 +75,12 @@ int main(){
     cin >> TC;
     cin.ignore();
     while(TC--){
-        //memset(T, 0, sizeof T);
-        
         cin.getline(T, MAX_N);
         n = (int)strlen(T);
         T[n++] = '$';
         constructSA();
         constructLCP();
         int res = 0;
-        /* for(int i=1; i<n; i++){
-            cout << SA[i] << " "  << LCP[i]  << " " << T + SA[i] << endl;
-        } */
         for(int i=2; i<n; i++){
             if(LCP[i] > LCP[i-1])
                 res += LCP[i] - LCP[i-1];
