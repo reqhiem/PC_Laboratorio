@@ -1,3 +1,5 @@
+//Suffix array implementation
+
 #include <iostream>
 #include <algorithm>
 #include <cstring>
