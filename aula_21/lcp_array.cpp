@@ -1,3 +1,6 @@
+//LCP array implementation
+//based on Halim & Halim book
+
 #include <iostream>
 #include <algorithm>
 #include <cstring>
