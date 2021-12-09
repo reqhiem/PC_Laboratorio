@@ -50,27 +50,12 @@ void constructSA(){
     
 }
 
-void constructLCP(){
-    int i,j,k,aux;
-    LCP[1] = 0;
-    for(i=2; i<n;i++){
-        j = SA[i-1];
-        k = SA[i];
-        aux = 0;
-        while(T[j+aux] == T[k+aux]){
-            aux++;
-        }
-        LCP[i] = aux;
-    }
-}
-
 int main(){
     cin.getline(T, MAX_N);
     n = (int)strlen(T);
     T[n++] = '$';
     constructSA();
-    constructLCP();
     for (int i = 1; i < n; i++){
-        cout << SA[i] << " " << LCP[i] << " " << T + SA[i] << endl;
+        cout << SA[i] << " " << T + SA[i] << endl;
     }
 }

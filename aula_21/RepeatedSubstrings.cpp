@@ -65,12 +65,25 @@ void constructLCP(){
 }
 
 int main(){
-    cin.getline(T, MAX_N);
-    n = (int)strlen(T);
-    T[n++] = '$';
-    constructSA();
-    constructLCP();
-    for (int i = 1; i < n; i++){
-        cout << SA[i] << " " << LCP[i] << " " << T + SA[i] << endl;
+    int TC;
+    cin >> TC;
+    cin.ignore();
+    while(TC--){
+        //memset(T, 0, sizeof T);
+        
+        cin.getline(T, MAX_N);
+        n = (int)strlen(T);
+        T[n++] = '$';
+        constructSA();
+        constructLCP();
+        int res = 0;
+        /* for(int i=1; i<n; i++){
+            cout << SA[i] << " "  << LCP[i]  << " " << T + SA[i] << endl;
+        } */
+        for(int i=2; i<n; i++){
+            if(LCP[i] > LCP[i-1])
+                res += LCP[i] - LCP[i-1];
+        }
+        cout << res << endl;
     }
 }
