@@ -1,2 +1,10 @@
 .vscode/
 *.out
+*.exe
+*.sal
+test*
+cf/
+cpc2021/
+hh/
+misc/
+rpc2109/
