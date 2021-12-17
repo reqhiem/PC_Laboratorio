@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Three Powers from https://open.kattis.com/problems/threepowers
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>

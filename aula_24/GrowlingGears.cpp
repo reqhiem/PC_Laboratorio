@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Growling Gears from https://open.kattis.com/problems/growlinggears
+*/
+
 #include <cmath>
 #include <iostream>
 #include <vector>

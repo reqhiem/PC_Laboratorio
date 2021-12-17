@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: How Many Digits? from https://open.kattis.com/problems/howmanydigits
+*/
+
 #include <iostream>
 #include <cmath>
 #include <unordered_map>
