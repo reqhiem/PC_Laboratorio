@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Bank Queue from https://open.kattis.com/problems/bank
+*/
+
 #include <iostream>
 #include <queue>
 #include <set>

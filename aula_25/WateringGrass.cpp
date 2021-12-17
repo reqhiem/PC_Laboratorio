@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Watering Grass from https://open.kattis.com/problems/grass
+*/
+
 #include <iostream>
 #include <vector>
 #include <cmath>
