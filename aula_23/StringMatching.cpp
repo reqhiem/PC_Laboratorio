@@ -1,3 +1,8 @@
+/**
+ *  @autor: Joel Perca
+ *  @problema: Implementación de String Matching
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
