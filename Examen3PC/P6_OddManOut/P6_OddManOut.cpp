@@ -1,3 +1,8 @@
+/**
+ * @autor: Joel Perca
+ * @problema: Odd Man Out from https://open.kattis.com/problems/oddmanout
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <unordered_map>
