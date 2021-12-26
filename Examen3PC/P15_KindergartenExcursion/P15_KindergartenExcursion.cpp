@@ -1,3 +1,8 @@
+/**
+ * @autor: Joel Perca
+ * @problema: Kindergarten Excursion from https://open.kattis.com/problems/excursion
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;
