@@ -1,3 +1,8 @@
+/**
+ * @autor: Joel Perca
+ * @problema: Button Bashing from https://open.kattis.com/problems/buttonbashing
+*/
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
