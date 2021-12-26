@@ -1,3 +1,8 @@
+/**
+ * @autor: Joel Perca
+ * @problema: Collatz Conjecture from https://open.kattis.com/problems/collatz
+*/
+
 #include <iostream>
 #include <cmath>
 #include <unordered_map>
